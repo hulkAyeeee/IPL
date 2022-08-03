@@ -92,15 +92,11 @@ public class RCB {
 		JsonPath J=new JsonPath(jsonStringPayload);
 		
 		List<Object> L=J.getList("player");
-		System.err.println(L);
 		System.out.println(L.size());
 		
 //		Test case 1 Validate only 4 foreign players in a team-------------
 		
-		List<Object> M=J.getList("player.country");
-		System.out.println(M.size());
-		
-		
+		List<Object> M=J.getList("player.country");		
 		
 		for(int i=0;i<M.size();i++) 
 		{
@@ -113,23 +109,33 @@ public class RCB {
 		
 		System.out.println(foreignPlayers);
 		
+		if (foreignPlayers==4)
+		{
+		
+		System.out.println("Test case 1 is Pass");
+		
+	    }
+		
 		
 //		Test case 2 Validate that only one wicket keeper is present in the team-------------
 		
 		
-		List<Object> X=J.getList("player.role");
-		System.out.println(X.size());
-		
+		List<Object> X=J.getList("player.role");		
 		
 		for(int i=0;i<X.size();i++) 
 		{
 			if(X.get(i).equals("Wicket-keeper")) 
 			{
-				wicketkeeper=wicketkeeper+1;			
+				wicketkeeper++;			
 			}		
 		}
 		
-		System.out.println(wicketkeeper);
+		if (wicketkeeper==1)
+		{
+			System.out.println("Only "+wicketkeeper + " is present");
+			System.out.println("Test case 2 is Pass");
+		
+	    }
 		
 }
 }
